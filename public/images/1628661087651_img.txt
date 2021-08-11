@@ -1,0 +1,28 @@
+es algo de andreani q se diagnosticó hace rato pero recien ahora se arregla.
+
+los ZFC en sap dan error de creacion de remito
+
+si son 20 pos, ponele
+
+en el retorno de la creacion vienen las 20, pero solo OK la primera
+
+entonces si bien existen tanto aca como alla 20 pos, queda solo 1 en pedidorelpreacuerdo
+
+pq de 2 en adelante vienen con err 1030 
+
+ 	<RETURN_CODE>1030</RETURN_CODE>  
+    <DESC_ERROR>-Remito:6400040300 duplicado para proveedor:0000154294</DESC_ERROR>     
+
+el arreglo consiste en ignorar el error 1030, siempre y cuando la 1ra pos esté ok ya en pedidorelpreac
+
+y la prueba... you know
+
+hacer una OC de mas de una pos, bajarla y revisar q quede completamente mapeada en pedidorelpreacuerdo
+
+no se como forzar el error de remito alla... si lo hace siempre... dunno
+
+
+
+
+documentación de las interfaces de alta de proveedores para ver cómo se comporta con SAP.
+archivos txt de alta de proveedores

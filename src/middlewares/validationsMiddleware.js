@@ -171,6 +171,8 @@ const validateUserEdit = [
 
 const validateRegProduct = [ 
 	body('name').notEmpty().withMessage('Recordá ingresar un nombre').bail().isLength({ min: 5 }).withMessage('El nombre debe tener al menos 5 caracteres'),
+	body('category').notEmpty().withMessage('Recordá seleccionar una categoría'),
+	body('brand').notEmpty().withMessage('Recordá seleccionar una marca'),
 	body('model').notEmpty().withMessage('Recordá ingresar un modelo'),
 	body('description').notEmpty().withMessage('Recordá ingresar un modelo').bail().isLength({ min: 20 }).withMessage('La descripción no puede contener menos de 20 caracteres'),
 	body('specs').notEmpty().withMessage('Debes completar las especificaciones técnicas del producto'),
@@ -237,6 +239,8 @@ const validateRegProduct = [
 
 const validateEditProduct = [ 
 	body('name').notEmpty().withMessage('Recordá ingresar un nombre').bail().isLength({ min: 5 }).withMessage('El nombre debe tener al menos 5 caracteres'),
+	body('category').notEmpty().withMessage('Recordá seleccionar una categoría'),
+	body('brand').notEmpty().withMessage('Recordá seleccionar una marca'),
 	body('model').notEmpty().withMessage('Recordá ingresar un modelo'),
 	body('description').notEmpty().withMessage('Recordá ingresar un modelo').bail().isLength({ min: 20 }).withMessage('La descripción no puede contener menos de 20 caracteres'),
 	body('specs').notEmpty().withMessage('Debes completar las especificaciones técnicas del producto'),
