@@ -1,0 +1,64 @@
+<header>
+  <nav class="top-navbar">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark" style="background-color: #404040;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="/images/wedo_vector.png" alt="" width="40" height="40" class="d-inline-block align-text-center">   
+        We Do Studio
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto  mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/services/serviceList">Servicios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/products/productList">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/courses/courseList">Cursos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/quienesSomos">Quienes somos</a>
+          </li>
+        </ul>
+
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+          <button class="btn btn-outline-light" type="submit"> <i class="fas fa-search"></i></button>
+        </form>
+
+        <div class="barra2">
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-lg-0">
+              <ul class="navbar-nav align-items-center">                  
+                <% if (locals.isLogged) { %>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropUser" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <img src="/images/avatars/<%= locals.userLogged.avatar %>" width="40px" style="border-radius: 100%;">
+                      Bienvenido <%= locals.userLogged.userName %> 
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/users/profile">Perfil</a>
+                      <li><hr class="dropdown-divider"></li>
+                      <a class="dropdown-item" href="/users/logout">Logout</a>
+                    </ul>
+                  </li>
+                <% } else { %>
+                  <li class="nav-item"><a class="nav-link" href="/users/login">Login</a></li>
+                <% } %>
+              </ul>
+            </ul>
+          </div>
+        </div>
+      </div>
+  </nav>
+</nav>
+</header>

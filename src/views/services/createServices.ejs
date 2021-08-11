@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <link rel="stylesheet" href="/css/styles_createServices.css">
+    <%- include('../partials/head') %>
+    </head>
+<body>
+    <%- include('../partials/header') %>z
+
+    <main>
+        <form action="/services/store" method="POST" enctype="multipart/form-data" class="form">
+            <div class="upload">
+            <h3 class="form_h3">Crear</h3>
+            
+            <label class="form_texto" for="name">Nombre:</label>
+            <input 
+            type="text" 
+            name="name" 
+            id="name"
+            class="write_upload <%= locals.errors && errors.name ? 'is-invalid' : null %>"
+            value= "<%= locals.oldData ? oldData.name : null %>"
+            >
+            <small class="text-danger name"></small>
+            <% if (locals.errors && errors.name) {%>
+            <div class="text-danger"><%= errors.name.msg %></div> 
+            <% } %>
+            
+            
+            
+            
+            <label class="form_texto" for="description">Descripcion:</label>
+            <input class="write_upload" type="text" name="description" id="description">
+            <label class="form_texto" for="keywords">Palabras clave:</label>
+            <input class="write_upload" type="text" name="keywords" id="keywords">
+            <label class="form_texto" for="image">Imagen:</label>
+            <input class="write_upload" type="file" name="image">
+            <label class="form_texto" for="price">Precio:</label>
+            <input class="write_upload" type="text" name="price" id="price">
+            <label class="form_texto" for="discount">Descuento:</label>
+            <input class="write_upload" type="text" name="discount" id="discount">
+            <input class="enviaData" type="submit" value="Crear item">
+        </div>
+        </form>
+        
+</main>
+
+
+
+<%- include('../partials/footer') %>
+<script src="/js/js-services.js"></script>
+</body>
+</html>

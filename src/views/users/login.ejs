@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head') %>
+
+    <link rel="stylesheet" href="/css/styles_login.css">
+    <script src="/js/login.js"></script>
+    <title>Wedo Studio</title>
+</head>
+
+<body>
+
+    <%- include('../partials/header') %>
+
+    <main>
+                
+        <form action="/users/login" method="POST" class="form">
+            <div class="box-login">
+                <h3>Login</h3>
+                <!--username-->
+                <label class="user" for="email">E-Mail</label>
+                <input class="write" type="text" name="email" id="email" placeholder="Escribir e-mail">
+                <small class="text-danger email"></small>
+                <% if (locals.errors && errors.email) { %>
+                    <div class="validacion">
+                        <%= errors.email.msg %>
+                    </div>
+                <% } %>
+                <!--password-->
+                <label class="user" for="password">Contraseña</label>
+                <input class="write" type="password" name="password" id="password" placeholder="Escribir Password">  
+                <small class="text-danger password"></small>
+                <% if (locals.errors && errors.password) { %>
+                    <div class="validacion">
+                        <%= errors.password.msg %>
+                    </div>
+                <% } %>
+                <!--boton-->
+                <input class="new" type="submit" name="submit" value="Ingresar">
+                <small class="text-danger submit"></small>
+                <% if (locals.errors && errors.submit) { %>
+                    <div class="validacion">
+                        <%= errors.submit.msg %>
+                    </div>
+                <% } %>
+                <!--texto abajo-->
+                <label><input class="check" type="checkbox" name="remember_me" id="remember_me" value="first_checkbox">Recuerdame</label>
+
+                <a class="registro" href="#">Olvide mi contraseña</a>
+            </div>
+            <div class="box-new">
+                <!--sos nuevo-->
+                <h4>¿Sos Nuevo?</h4>
+                <a class="login_register" href='/users/register'>Registrame</a>
+            </div>
+
+
+        </form>
+    </main>
+    
+    <%- include('../partials/footer') %>
+
+</body>
+</html>
