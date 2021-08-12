@@ -21,6 +21,7 @@ window.addEventListener("load", function() {
     let productStock = document.querySelector("#stock");
     let productStockMin = document.querySelector("#stockMin");
     let productStockMax = document.querySelector("#stockMax");
+    let numericValue = /^[0-9]+$/;
 
 
     productName.addEventListener ("blur", function(e) {
@@ -161,12 +162,14 @@ window.addEventListener("load", function() {
 
         errors = [];
 
-        
+        if(productImage1.value == '') {
+            errors.push({ name: 'image1', msg: 'Recordá ingresar una imagen' });
+        } else {
             let extension = productImage1.value.split('.')[1]
             if(!extension.match(acceptedExtensions)) {
                 errors.push({ name: 'image1', msg: 'Las extensiones de archivo permitidas son .JPG, .JPEG, .PNG o .GIF' });                
             }
-    
+        }
 
         if(errors.length == 0) {                
             camposErrores[7].innerText = '';
@@ -260,6 +263,11 @@ window.addEventListener("load", function() {
             
         if(productPrice.value == '') {                
             errors.push({ name: 'price', msg: 'Debes ingresar un valor' });
+        } 
+        else {
+            if (!productPrice.value.match(numericValue)) {
+                errors.push({ name: 'price', msg: 'El valor debe ser numérico' })   
+            }
         };
         
         if(errors.length == 0) {                
@@ -275,10 +283,17 @@ window.addEventListener("load", function() {
     productDiscount.addEventListener ("blur", function(e) {
 
         errors = [];
+        let key = window.event ? e.which : e.keyCode
             
         if(productDiscount.value == '') {                
-            errors.push({ name: 'discount', msg: 'Debes ingresar un descuento' });
-        };
+            errors.push({ name: 'discount', msg: 'Debes ingresar un descuento' })
+        } else if (productDiscount.value < 1 || productDiscount.value > 99 ) {
+            errors.push({ name: 'discount', msg: 'El descuento debe ser entre 0% y 99%' }) 
+        }else {
+            if (!productDiscount.value.match(numericValue)) {
+                errors.push({ name: 'discount', msg: 'El valor debe ser numérico' })   
+            }
+        };;
         
         if(errors.length == 0) {                
             camposErrores[13].innerText = '';
@@ -297,14 +312,18 @@ window.addEventListener("load", function() {
         if(productStock.value == '') {                
             errors.push({ name: 'stock', msg: 'Debes ingresar el stock del producto' });
         } else if (productStock.value.length <= 0) {                
-            errors.push({ name: 'stock', msg: 'El stock no puede ser menor o igual a 0' });
-        } 
+            errors.push({ name: 'stock', msg: 'El stock no puede ser menor o igual a 0' })
+        } else {
+            if (!productStock.value.match(numericValue)) {
+                errors.push({ name: 'stock', msg: 'El valor debe ser numérico' })   
+            }
+        };
         
         if(errors.length == 0) {                
             camposErrores[14].innerText = '';
         } else {
             for (let i = 0; i < errors.length; i++) {
-                let lineaError = document.querySelector("small." + errors[i].name);                
+                let lineaError = document.querySelector("small." + errors[i].name)               
                 lineaError.innerText = errors[i].msg;            
             }            
         }  
@@ -317,8 +336,14 @@ window.addEventListener("load", function() {
         if(productStockMin.value == '') {                
             errors.push({ name: 'stockMin', msg: 'Debes indicar un stock mínimo' });
         } else if (productStockMin.value.length <= 0) {                
-            errors.push({ name: 'stockMin', msg: 'El stock minímo no puede ser igual a 0' });
-        } 
+            errors.push({ name: 'stockMin', msg: 'El stock minímo no puede ser igual a 0' })
+        } else if (productStockMin.value > productStock.value ) {
+            errors.push({ name: 'stockMin', msg: 'El stock mínimo no puede ser mayor al stock base' })
+        } else {
+            if (!productStockMin.value.match(numericValue)) {
+                errors.push({ name: 'stockMin', msg: 'El valor debe ser numérico' })   
+            }
+        };
         
         if(errors.length == 0) {                
             camposErrores[15].innerText = '';
@@ -338,7 +363,13 @@ window.addEventListener("load", function() {
             errors.push({ name: 'stockMax', msg: 'Debes indicar un stock máximo' });
         } else if (productStockMax.value.length <= 0) {                
             errors.push({ name: 'stockMax', msg: 'El stock máximo no puede ser igual a 0' });
-        } 
+        } else if (productStockMax.value < productStockMin.value) {
+            errors.push({ name: 'stockMax', msg: 'El stock máximo debe ser mayor al stock mínimo' });
+        } else {
+            if (!productStockMax.value.match(numericValue)) {
+                errors.push({ name: 'stockMax', msg: 'El valor debe ser numérico' })   
+            }
+        };
         
         if(errors.length == 0) {                
             camposErrores[16].innerText = '';
@@ -393,12 +424,12 @@ window.addEventListener("load", function() {
             errors.push({ name: 'keywords', msg: 'La palabra clave no puede ser solo una letra' });
         };
 
-    
+        if(productImage1.value == '') {
             let extension = productImage1.value.split('.')[1]
             if(!extension.match(acceptedExtensions)) {
                 errors.push({ name: 'image1', msg: 'Las extensiones de archivo permitidas son .JPG, .JPEG, .PNG o .GIF' });                
             }
-        ;
+        };
 
         if(productImage2.value != '') {
             let extension = productImage2.value.split('.')[1]
@@ -430,25 +461,56 @@ window.addEventListener("load", function() {
 
         if(productPrice.value == '') {                
             errors.push({ name: 'price', msg: 'Debes ingresar un valor' });
+        } 
+        else {
+            if (!productPrice.value.match(numericValue)) {
+                errors.push({ name: 'price', msg: 'El valor debe ser numérico' })   
+            }
         };
+
         if(productDiscount.value == '') {                
-            errors.push({ name: 'discount', msg: 'Debes ingresar un descuento' });
+            errors.push({ name: 'discount', msg: 'Debes ingresar un descuento' })
+        } else if (productDiscount.value < 1 || productDiscount.value > 99 ) {
+            errors.push({ name: 'discount', msg: 'El descuento debe ser entre 0% y 99%' }) 
+        }else {
+            if (!productDiscount.value.match(numericValue)) {
+                errors.push({ name: 'discount', msg: 'El valor debe ser numérico' })   
+            }
         };
+
         if(productStock.value == '') {                
             errors.push({ name: 'stock', msg: 'Debes ingresar el stock del producto' });
         } else if (productStock.value.length <= 0) {                
-            errors.push({ name: 'stock', msg: 'El stock no puede ser menor o igual a 0' });
+            errors.push({ name: 'stock', msg: 'El stock no puede ser menor o igual a 0' })
+        } else {
+            if (!productStock.value.match(numericValue)) {
+                errors.push({ name: 'stock', msg: 'El valor debe ser numérico' })   
+            }
         };
+
         if(productStockMin.value == '') {                
             errors.push({ name: 'stockMin', msg: 'Debes indicar un stock mínimo' });
         } else if (productStockMin.value.length <= 0) {                
-            errors.push({ name: 'stockMin', msg: 'El stock minímo no puede ser igual a 0' });
+            errors.push({ name: 'stockMin', msg: 'El stock minímo no puede ser igual a 0' })
+        } else if (productStockMin.value > productStock.value ) {
+            errors.push({ name: 'stockMin', msg: 'El stock mínimo no puede ser mayor al stock base' })
+        } else {
+            if (!productStockMin.value.match(numericValue)) {
+                errors.push({ name: 'stockMin', msg: 'El valor debe ser numérico' })   
+            }
         };
+        
         if(productStockMax.value == '') {                
             errors.push({ name: 'stockMax', msg: 'Debes indicar un stock máximo' });
         } else if (productStockMax.value.length <= 0) {                
             errors.push({ name: 'stockMax', msg: 'El stock máximo no puede ser igual a 0' });
-        };
+        } else if (productStockMax.value < productStockMin.value) {
+            errors.push({ name: 'stockMax', msg: 'El stock máximo debe ser mayor al stock mínimo' });
+        } else {
+            if (!productStockMax.value.match(numericValue)) {
+                errors.push({ name: 'stockMax', msg: 'El valor debe ser numérico' })   
+            }
+        }
 
         if(errors.length > 0) {
             e.preventDefault();
