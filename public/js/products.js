@@ -9,12 +9,18 @@ window.addEventListener("load", function() {
     let productBrand = document.querySelector("#brand");
     let productModel = document.querySelector("#model");
     let productDescription = document.querySelector("#description");
+    let productSpecs = document.querySelector("#specs");
     let productKeywords = document.querySelector("#keywords");
+    let productImage1 = document.querySelector("#image1");
+    let productImage2 = document.querySelector("#image2");
+    let productImage3 = document.querySelector("#image3");
+    let productImage4 = document.querySelector("#image4");
+    let productImage5 = document.querySelector("#image5");
     let productPrice = document.querySelector("#price");
     let productDiscount = document.querySelector("#discount");
     let productStock = document.querySelector("#stock");
-    let productStockmin = document.querySelector("#stockMin");
-    let productStockmax = document.querySelector("#stockMax");
+    let productStockMin = document.querySelector("#stockMin");
+    let productStockMax = document.querySelector("#stockMax");
 
 
     productName.addEventListener ("blur", function(e) {
@@ -22,9 +28,9 @@ window.addEventListener("load", function() {
         errors = [];
             
         if(productName.value == '') {                
-            errors.push({ name: 'productName', msg: 'Recordá ingresar un nombre' });
+            errors.push({ name: 'name', msg: 'Recordá ingresar un nombre' });
         } else if (productName.value.length < 2) {                
-            errors.push({ name: 'productName', msg: 'El nombre debe tener al menos 2 caracteres' });
+            errors.push({ name: 'name', msg: 'El nombre debe tener al menos 2 caracteres' });
         } 
         
         if(errors.length == 0) {                
@@ -41,12 +47,12 @@ window.addEventListener("load", function() {
 
         errors = [];
             
-        if(productCategory.value == 0) {                
-            errors.push({ name: 'productCategory', msg: 'Debes seleccionar una categoria' });
+        if(productCategory.value == '') {                
+            errors.push({ name: 'category', msg: 'Debes seleccionar una categoria' });
         };
         
         if(errors.length == 0) {                
-            camposErrores[0].innerText = 0;
+            camposErrores[1].innerText = 0;
         } else {
             for (let i = 0; i < errors.length; i++) {
                 let lineaError = document.querySelector("small." + errors[i].name);                
@@ -59,12 +65,12 @@ window.addEventListener("load", function() {
 
         errors = [];
             
-        if(productBrand.value == 0) {                
-            errors.push({ name: 'productBrand', msg: 'Debes seleccionar una marca' });
+        if(productBrand.value == '') {                
+            errors.push({ name: 'brand', msg: 'Debes seleccionar una marca' });
         };
         
         if(errors.length == 0) {                
-            camposErrores[0].innerText = '';
+            camposErrores[2].innerText = '';
         } else {
             for (let i = 0; i < errors.length; i++) {
                 let lineaError = document.querySelector("small." + errors[i].name);                
@@ -78,11 +84,11 @@ window.addEventListener("load", function() {
         errors = [];
             
         if(productModel.value == '') {                
-            errors.push({ name: 'productModel', msg: 'Recordá ingresar un modelo' });
+            errors.push({ name: 'model', msg: 'Recordá ingresar un modelo' });
         };
         
         if(errors.length == 0) {                
-            camposErrores[0].innerText = '';
+            camposErrores[3].innerText = '';
         } else {
             for (let i = 0; i < errors.length; i++) {
                 let lineaError = document.querySelector("small." + errors[i].name);                
@@ -96,13 +102,13 @@ window.addEventListener("load", function() {
         errors = [];
             
         if(productDescription.value == '') {                
-            errors.push({ name: 'productDescription', msg: 'Recordá ingresar una descripción' });
+            errors.push({ name: 'description', msg: 'Recordá ingresar una descripción' });
         } else if (productDescription.value.length < 20) {                
-            errors.push({ name: 'productDescription', msg: 'La descripción debe contar con al menos 20 caracteres'});
+            errors.push({ name: 'description', msg: 'La descripción debe contar con al menos 20 caracteres'});
         } 
         
         if(errors.length == 0) {                
-            camposErrores[0].innerText = '';
+            camposErrores[4].innerText = '';
         } else {
             for (let i = 0; i < errors.length; i++) {
                 let lineaError = document.querySelector("small." + errors[i].name);                
@@ -116,13 +122,13 @@ window.addEventListener("load", function() {
         errors = [];
             
         if(productSpecs.value == '') {                
-            errors.push({ name: 'productSpecs', msg: 'Recordá ingresar, al menos, una especificación tecnica' });
+            errors.push({ name: 'specs', msg: 'Recordá ingresar, al menos, una especificación tecnica' });
         } else if (productSpecs.value.length < 1) {                
-            errors.push({ name: 'productSpecs', msg: 'La especificación no puede ser solo una letra' });
+            errors.push({ name: 'specs', msg: 'La especificación no puede ser solo una letra' });
         } 
         
         if(errors.length == 0) {                
-            camposErrores[0].innerText = '';
+            camposErrores[5].innerText = '';
         } else {
             for (let i = 0; i < errors.length; i++) {
                 let lineaError = document.querySelector("small." + errors[i].name);                
@@ -136,13 +142,13 @@ window.addEventListener("load", function() {
         errors = [];
             
         if(productKeywords.value == '') {                
-            errors.push({ name: 'productKeywords', msg: 'Debes ingresar una palabra clave' });
+            errors.push({ name: 'keywords', msg: 'Debes ingresar una palabra clave' });
         } else if (productKeywords.value.length < 1) {                
-            errors.push({ name: 'productKeywords', msg: 'La palabra clave no puede ser solo una letra' });
+            errors.push({ name: 'keywords', msg: 'La palabra clave no puede ser solo una letra' });
         } 
         
         if(errors.length == 0) {                
-            camposErrores[0].innerText = '';
+            camposErrores[6].innerText = '';
         } else {
             for (let i = 0; i < errors.length; i++) {
                 let lineaError = document.querySelector("small." + errors[i].name);                
@@ -151,16 +157,115 @@ window.addEventListener("load", function() {
         }  
     });
 
+    productImage1.addEventListener ("blur", function(e) {
+
+        errors = [];
+
+        if(productImage1.value == '') {
+            errors.push({ name: 'image1', msg: 'Recordá ingresar una imagen' });
+        } else {
+            let extension = productImage1.value.split('.')[1]
+            if(!extension.match(acceptedExtensions)) {
+                errors.push({ name: 'image1', msg: 'Las extensiones de archivo permitidas son .JPG, .JPEG, .PNG o .GIF' });                
+            }
+        }
+
+        if(errors.length == 0) {                
+            camposErrores[7].innerText = '';
+        } else {
+            for (let i = 0; i < errors.length; i++) {
+                let lineaError = document.querySelector("small." + errors[i].name);                
+                lineaError.innerText = errors[i].msg;            
+            }            
+        } 
+    });
+
+    productImage2.addEventListener ("blur", function(e) {
+
+        errors = [];
+        
+        let extension = productImage2.value.split('.')[1]
+        if(!extension.match(acceptedExtensions)) {
+            errors.push({ name: 'image2', msg: 'Las extensiones de archivo permitidas son .JPG, .JPEG, .PNG o .GIF' });                
+        }
+        
+        if(errors.length == 0) {                
+            camposErrores[8].innerText = '';
+        } else {
+            for (let i = 0; i < errors.length; i++) {
+                let lineaError = document.querySelector("small." + errors[i].name);                
+                lineaError.innerText = errors[i].msg;            
+            }            
+        } 
+    });
+
+    productImage3.addEventListener ("blur", function(e) {
+
+        errors = [];
+        
+        let extension = productImage3.value.split('.')[1]
+        if(!extension.match(acceptedExtensions)) {
+            errors.push({ name: 'image3', msg: 'Las extensiones de archivo permitidas son .JPG, .JPEG, .PNG o .GIF' });                
+        }
+        
+        if(errors.length == 0) {                
+            camposErrores[9].innerText = '';
+        } else {
+            for (let i = 0; i < errors.length; i++) {
+                let lineaError = document.querySelector("small." + errors[i].name);                
+                lineaError.innerText = errors[i].msg;            
+            }            
+        } 
+    });
+
+    productImage4.addEventListener ("blur", function(e) {
+
+        errors = [];
+        
+        let extension = productImage4.value.split('.')[1]
+        if(!extension.match(acceptedExtensions)) {
+            errors.push({ name: 'image4', msg: 'Las extensiones de archivo permitidas son .JPG, .JPEG, .PNG o .GIF' });                
+        }
+        
+        if(errors.length == 0) {                
+            camposErrores[10].innerText = '';
+        } else {
+            for (let i = 0; i < errors.length; i++) {
+                let lineaError = document.querySelector("small." + errors[i].name);                
+                lineaError.innerText = errors[i].msg;            
+            }            
+        } 
+    });
+
+    productImage5.addEventListener ("blur", function(e) {
+
+        errors = [];
+        
+        let extension = productImage5.value.split('.')[1]
+        if(!extension.match(acceptedExtensions)) {
+            errors.push({ name: 'image5', msg: 'Las extensiones de archivo permitidas son .JPG, .JPEG, .PNG o .GIF' });                
+        }
+        
+        if(errors.length == 0) {                
+            camposErrores[11].innerText = '';
+        } else {
+            for (let i = 0; i < errors.length; i++) {
+                let lineaError = document.querySelector("small." + errors[i].name);                
+                lineaError.innerText = errors[i].msg;            
+            }            
+        } 
+    });
+
     productPrice.addEventListener ("blur", function(e) {
 
         errors = [];
             
         if(productPrice.value == '') {                
-            errors.push({ name: 'productPrice', msg: 'Debes ingresar un valor' });
+            errors.push({ name: 'price', msg: 'Debes ingresar un valor' });
         };
         
         if(errors.length == 0) {                
-            camposErrores[0].innerText = '';
+            camposErrores[12].innerText = '';
         } else {
             for (let i = 0; i < errors.length; i++) {
                 let lineaError = document.querySelector("small." + errors[i].name);                
@@ -174,11 +279,11 @@ window.addEventListener("load", function() {
         errors = [];
             
         if(productDiscount.value == '') {                
-            errors.push({ name: 'productDiscount', msg: 'Debes ingresar un descuento' });
+            errors.push({ name: 'discount', msg: 'Debes ingresar un descuento' });
         };
         
         if(errors.length == 0) {                
-            camposErrores[0].innerText = '';
+            camposErrores[13].innerText = '';
         } else {
             for (let i = 0; i < errors.length; i++) {
                 let lineaError = document.querySelector("small." + errors[i].name);                
@@ -192,13 +297,13 @@ window.addEventListener("load", function() {
         errors = [];
             
         if(productStock.value == '') {                
-            errors.push({ name: 'productStock', msg: 'Debes ingresar el stock del producto' });
+            errors.push({ name: 'stock', msg: 'Debes ingresar el stock del producto' });
         } else if (productStock.value.length <= 0) {                
-            errors.push({ name: 'productStock', msg: 'El stock no puede ser menor o igual a 0' });
+            errors.push({ name: 'stock', msg: 'El stock no puede ser menor o igual a 0' });
         } 
         
         if(errors.length == 0) {                
-            camposErrores[0].innerText = '';
+            camposErrores[14].innerText = '';
         } else {
             for (let i = 0; i < errors.length; i++) {
                 let lineaError = document.querySelector("small." + errors[i].name);                
@@ -207,18 +312,18 @@ window.addEventListener("load", function() {
         }  
     });
 
-    productStockmin.addEventListener ("blur", function(e) {
+    productStockMin.addEventListener ("blur", function(e) {
 
         errors = [];
             
-        if(productStockmin.value == '') {                
-            errors.push({ name: 'productStockmin', msg: 'Debes indicar un stock mínimo' });
-        } else if (productStockmin.value.length <= 0) {                
-            errors.push({ name: 'productStockmin', msg: 'El stock minímo no puede ser igual a 0' });
+        if(productStockMin.value == '') {                
+            errors.push({ name: 'stockMin', msg: 'Debes indicar un stock mínimo' });
+        } else if (productStockMin.value.length <= 0) {                
+            errors.push({ name: 'stockMin', msg: 'El stock minímo no puede ser igual a 0' });
         } 
         
         if(errors.length == 0) {                
-            camposErrores[0].innerText = '';
+            camposErrores[15].innerText = '';
         } else {
             for (let i = 0; i < errors.length; i++) {
                 let lineaError = document.querySelector("small." + errors[i].name);                
@@ -227,18 +332,18 @@ window.addEventListener("load", function() {
         }  
     });
 
-    productStockmax.addEventListener ("blur", function(e) {
+    productStockMax.addEventListener ("blur", function(e) {
 
         errors = [];
             
-        if(productStockmax.value == '') {                
-            errors.push({ name: 'productStockmax', msg: 'Debes indicar un stock máximo' });
-        } else if (productStockmax.value.length <= 0) {                
-            errors.push({ name: 'productStockmax', msg: 'El stock máximo no puede ser igual a 0' });
+        if(productStockMax.value == '') {                
+            errors.push({ name: 'stockMax', msg: 'Debes indicar un stock máximo' });
+        } else if (productStockMax.value.length <= 0) {                
+            errors.push({ name: 'stockMax', msg: 'El stock máximo no puede ser igual a 0' });
         } 
         
         if(errors.length == 0) {                
-            camposErrores[0].innerText = '';
+            camposErrores[16].innerText = '';
         } else {
             for (let i = 0; i < errors.length; i++) {
                 let lineaError = document.querySelector("small." + errors[i].name);                
@@ -255,55 +360,98 @@ window.addEventListener("load", function() {
         };
         
         if(productName.value == '') {                
-            errors.push({ name: 'productName', msg: 'Recordá ingresar un nombre' });
+            errors.push({ name: 'name', msg: 'Recordá ingresar un nombre' });
         } else if (productName.value.length < 2) {                
-            errors.push({ name: 'productName', msg: 'El nombre debe tener al menos 2 caracteres' });
+            errors.push({ name: 'name', msg: 'El nombre debe tener al menos 2 caracteres' });
         };
         
-        if(productCategory.value == 0) {                
-            errors.push({ name: 'productCategory', msg: 'Debes seleccionar una categoria' });
+        if(productCategory.value == '') {                
+            errors.push({ name: 'category', msg: 'Debes seleccionar una categoria' });
         };
 
-        if(productCategory.value == 0) {                
-            errors.push({ name: 'productCategory', msg: 'Debes seleccionar una categoria' });
+        if(productBrand.value == '') {                
+            errors.push({ name: 'brand', msg: 'Debes seleccionar una marca' });
         };
 
         if(productModel.value == '') {                
-            errors.push({ name: 'productModel', msg: 'Recordá ingresar un modelo' });
+            errors.push({ name: 'model', msg: 'Recordá ingresar un modelo' });
         };
 
         if(productDescription.value == '') {                
-            errors.push({ name: 'productDescription', msg: 'Recordá ingresar una descripción' });
+            errors.push({ name: 'description', msg: 'Recordá ingresar una descripción' });
         } else if (productDescription.value.length < 20) {                
-            errors.push({ name: 'productDescription', msg: 'La descripción debe contar con al menos 20 caracteres'});
+            errors.push({ name: 'description', msg: 'La descripción debe contar con al menos 20 caracteres'});
+        };
+
+        if(productSpecs.value == '') {                
+            errors.push({ name: 'specs', msg: 'Recordá ingresar, al menos, una especificación tecnica' });
+        } else if (productSpecs.value.length < 1) {                
+            errors.push({ name: 'specs', msg: 'La especificación no puede ser solo una letra' });
         };
 
         if(productKeywords.value == '') {                
-            errors.push({ name: 'productKeywords', msg: 'Debes ingresar una palabra clave' });
+            errors.push({ name: 'keywords', msg: 'Debes ingresar una palabra clave' });
         } else if (productKeywords.value.length < 1) {                
-            errors.push({ name: 'productKeywords', msg: 'La palabra clave no puede ser solo una letra' });
+            errors.push({ name: 'keywords', msg: 'La palabra clave no puede ser solo una letra' });
+        };
+
+        if(productImage1.value == '') {
+            errors.push({ name: 'image1', msg: 'Recordá ingresar una imagen' });
+        } else {
+            let extension = productImage1.value.split('.')[1]
+            if(!extension.match(acceptedExtensions)) {
+                errors.push({ name: 'image1', msg: 'Las extensiones de archivo permitidas son .JPG, .JPEG, .PNG o .GIF' });                
+            }
+        };
+
+        if(productImage2.value != '') {
+            let extension = productImage2.value.split('.')[1]
+            if(!extension.match(acceptedExtensions)) {
+                errors.push({ name: 'image2', msg: 'Las extensiones de archivo permitidas son .JPG, .JPEG, .PNG o .GIF' });                
+            }
+        };
+
+        if(productImage3.value != '') {
+            let extension = productImage3.value.split('.')[1]
+            if(!extension.match(acceptedExtensions)) {
+                errors.push({ name: 'image3', msg: 'Las extensiones de archivo permitidas son .JPG, .JPEG, .PNG o .GIF' });                
+            }
+        };
+
+        if(productImage4.value != '') {
+            let extension = productImage4.value.split('.')[1]
+            if(!extension.match(acceptedExtensions)) {
+                errors.push({ name: 'image4', msg: 'Las extensiones de archivo permitidas son .JPG, .JPEG, .PNG o .GIF' });                
+            }
+        };
+
+        if(productImage5.value != '') {
+            let extension = productImage5.value.split('.')[1]
+            if(!extension.match(acceptedExtensions)) {
+                errors.push({ name: 'image5', msg: 'Las extensiones de archivo permitidas son .JPG, .JPEG, .PNG o .GIF' });                
+            }
         };
 
         if(productPrice.value == '') {                
-            errors.push({ name: 'productPrice', msg: 'Debes ingresar un valor' });
+            errors.push({ name: 'price', msg: 'Debes ingresar un valor' });
         };
         if(productDiscount.value == '') {                
-            errors.push({ name: 'productDiscount', msg: 'Debes ingresar un descuento' });
+            errors.push({ name: 'discount', msg: 'Debes ingresar un descuento' });
         };
         if(productStock.value == '') {                
-            errors.push({ name: 'productStock', msg: 'Debes ingresar el stock del producto' });
+            errors.push({ name: 'stock', msg: 'Debes ingresar el stock del producto' });
         } else if (productStock.value.length <= 0) {                
-            errors.push({ name: 'productStock', msg: 'El stock no puede ser menor o igual a 0' });
+            errors.push({ name: 'stock', msg: 'El stock no puede ser menor o igual a 0' });
         };
-        if(productStockmin.value == '') {                
-            errors.push({ name: 'productStockmin', msg: 'Debes indicar un stock mínimo' });
-        } else if (productStockmin.value.length <= 0) {                
-            errors.push({ name: 'productStockmin', msg: 'El stock minímo no puede ser igual a 0' });
+        if(productStockMin.value == '') {                
+            errors.push({ name: 'stockMin', msg: 'Debes indicar un stock mínimo' });
+        } else if (productStockMin.value.length <= 0) {                
+            errors.push({ name: 'stockMin', msg: 'El stock minímo no puede ser igual a 0' });
         };
-        if(productStockmax.value == '') {                
-            errors.push({ name: 'productStockmax', msg: 'Debes indicar un stock máximo' });
-        } else if (productStockmax.value.length <= 0) {                
-            errors.push({ name: 'productStockmax', msg: 'El stock máximo no puede ser igual a 0' });
+        if(productStockMax.value == '') {                
+            errors.push({ name: 'stockMax', msg: 'Debes indicar un stock máximo' });
+        } else if (productStockMax.value.length <= 0) {                
+            errors.push({ name: 'stockMax', msg: 'El stock máximo no puede ser igual a 0' });
         };
 
         if(errors.length > 0) {

@@ -207,17 +207,18 @@ const productsController = {
         
         } catch (error) {
             res.send(error)
-        }  }
-        else {            
-            res.render('products/editProducts', {
-                product,
-                categories,
-                brands,
-                //images,
-                //imagesOnProduct,
-                errors: errors.mapped(),
-                oldData: productEdition
-            })
+        } 
+    //  }
+    //     else {            
+    //         res.render('products/editProducts', {
+    //             product,
+    //             categories,
+    //             brands,
+    //             //images,
+    //             //imagesOnProduct,
+    //             errors: errors.mapped(),
+    //             oldData: productEdition
+    //         })
     }
     }, 
 
